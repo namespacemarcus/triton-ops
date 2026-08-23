@@ -55,7 +55,9 @@ def test_vector_add_rejects_shape_mismatch(device):
         triton_vector_add(x, y)
 
 
-@pytest.mark.parametrize("dtype_pair", [(torch.float32, torch.float16), (torch.float16, torch.float32)])
+@pytest.mark.parametrize(
+    "dtype_pair", [(torch.float32, torch.float16), (torch.float16, torch.float32)]
+)
 def test_vector_add_rejects_mixed_dtypes(device, dtype_pair):
     x = torch.randn(16, device=device, dtype=dtype_pair[0])
     y = torch.randn(16, device=device, dtype=dtype_pair[1])

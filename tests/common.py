@@ -9,6 +9,8 @@ TOLERANCES = {
 DTYPES = list(TOLERANCES)
 
 
-def assert_close(actual: torch.Tensor, expected: torch.Tensor, dtype: torch.dtype) -> None:
+def assert_close(
+    actual: torch.Tensor, expected: torch.Tensor, dtype: torch.dtype
+) -> None:
     atol, rtol = TOLERANCES.get(dtype, (1e-6, 1e-6))
     torch.testing.assert_close(actual, expected, atol=atol, rtol=rtol)
